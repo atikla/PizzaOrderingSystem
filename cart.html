@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Cart | Dominant Pizza</title>
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts for this template -->
+	<link href="css/fontawesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Plugin CSS -->
+	<link href="css/magnific-popup.css" rel="stylesheet">
+	<!-- Flags CSS -->
+	<link href="css/flag-icon.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/style.css" rel="stylesheet">
+
+	<script src="js/angular.min.js"></script>
+</head>
+
+<body id="page-top" ng-app="myApp" ng-controller="myCtrl">
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink shadow-sm">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="index.html">Dominant<span>Pizza</span></a>
+
+			<!-- cart button -->
+			<div class="d-flex order-lg-1 ml-auto">
+				<div class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="cart.html" id="cartMenu" aria-haspopup="true" aria-expanded="true">
+						<button type="button" class="btn btn-primary">
+							<i class="fas fa-shopping-cart"></i> <span class="badge badge-light" id="cartItemNumber"></span>
+						</button>
+					</a>
+				</div>
+			</div>
+			<!-- end of cart button -->
+
+			<!-- navbar toggoler -->
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+			 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- end of navbar toggoler -->
+
+			<!-- navbar links -->
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="index.html#pizza">Pizza</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="index.html#extras">Extra</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="index.html#track">Track Order</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="login.php">Login</a>
+					</li>
+				</ul>
+			</div>
+			<!-- end of navbar links -->
+		</div>
+	</nav>
+	<!-- end of navbar -->
+
+	<div class="container beginOfContent">
+		<div class="row justify-content-center">
+			<div class="col-12">
+				<div class="card mt-4 mb-4">
+					<div class="card-header text-center">Pizzas</div>
+					<div class="card-body" id="cardBody">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Pizza</th>
+										<th scope="col">Dough</th>
+										<th scope="col">Size</th>
+										<th scope="col">Amount</th>
+										<th scope="col">Total Price</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="x in pizzaOrder track by x.pizzaId">
+										<td>{{$index + 1}}</td>
+										<td>{{x.pizzaName}}</td>
+										<td>{{x.pizzaDough}}</td>
+										<td>{{x.pizzaSize}}</td>
+										<td>{{x.pizzaAmount}}</td>
+										<td>{{x.pizzaPrice}}</td>
+										<td scope="row" ng-click="removeItem($index, 'pizzaOrder')"><i class="fas fa-times"></i></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card-footer text-dark font-weight-bold text-center">
+						Pizza Total Price: <span class="text-primary" id="pizzaOrderTotalPrice"></span> TL
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="card mt-4 mb-4">
+					<div class="card-header text-center">Drinks and Extras</div>
+					<div class="card-body" id="cardBody">
+						<div class="table-responsive">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Product</th>
+										<th scope="col">Price</th>
+										<th scope="col">Amount</th>
+										<th scope="col">Total Price</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="x in nonPizzaOrder track by x.productID">
+										<td>{{$index + 1}}</td>
+										<td>{{x.productName}}</td>
+										<td>{{x.productPrice}}</td>
+										<td>{{x.productAmount}}</td>
+										<td>{{x.productTotalPrice}}</td>
+										<td scope="row" ng-click="removeItem($index, 'nonPizzaOrder')"><i class="fas fa-times"></i></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="card-footer text-dark font-weight-bold text-center">
+						Extra Total Price: <span class="text-primary" id="nonPizzaOrderTotalPrice"></span> TL
+					</div>
+				</div>
+			</div>
+
+			<div class="col-12">
+				<div class="card mt-4 mb-4">
+					<div class="card-header text-center">Customer's Info</div>
+					<div class="card-body" id="cardBody">
+						<form>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="CustomerFname">First Name</label>
+									<input type="text" class="form-control" id="CustomerFname" placeholder="First Name">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="CustomerLname">Last Name</label>
+									<input type="text" class="form-control" id="CustomerLname" placeholder="Last Name">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="CustomerAddress">Address</label>
+								<input type="text" class="form-control" id="CustomerAddress" placeholder="Your Address">
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="CustomerEmail">Email</label>
+									<input type="email" class="form-control" id="CustomerEmail" placeholder="Your Email">
+								</div>
+								<div class="form-group col-md-3">
+									<label for="CustomerPhone">Phone</label>
+									<input type="number" class="form-control" id="CustomerPhone" placeholder="5XX XXX XX XX">
+								</div>
+								<div class="form-group col-md-3">
+									<label for="payment">Payment Type</label>
+									<select id="payment" class="form-control">
+										<option value="Cash" selected>Cash</option>
+										<option vlaue="Cart">Credit Cart</option>
+									</select>
+								</div>
+							</div>
+							<button type="submit" onclick="sendOrder()" class="btn btn-secondary btn-block mt-3 mb-4" data-toggle="modal" data-target="#Modal">Check</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal -->
+	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content" id="modalContent">
+				<div class="modal-header" id="modalHeader">
+					<h5 class="modal-title" id="modalTitle">Info</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="modalBody" class="modal-body text-center" ng-model="modalBody">
+					<p class="text-centerd">Thank you for choosing us, Your Order Reference Code is:</p>
+					<h5 class="text-primary" id="referanceCode"></h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" ng-click="" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of modal -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="js/jquery.easing.min.js"></script>
+	<!-- Custom scripts for this template -->
+	<script src="js/script.js"></script>
+	<script src="js/uiScript.js"></script>
+</body>
+
+</html>
