@@ -1,0 +1,540 @@
+/*!
+ * Start Bootstrap - Creative v5.0.1 (https://startbootstrap.com/template-overviews/creative)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-creative/blob/master/LICENSE)
+ */
+
+
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+
+
+/*--------------- main : start -----------------*/
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	font-family: 'Cairo', sans-serif;
+	background-color: #eeeeee;
+	box-sizing: border-box;
+}
+
+hr {
+	max-width: 50px;
+	border-width: 3px;
+	border-color: #F05F40;
+}
+
+hr.light {
+	border-color: #fff;
+}
+
+a {
+	color: #F05F40;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+a:hover {
+	color: #F05F40;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Cairo', sans-serif;
+}
+
+.bg-primary {
+	background-color: #F05F40 !important;
+}
+
+.bg-dark {
+	background-color: #212529 !important;
+}
+
+.bg-light {
+	background-color: #eeeeee !important;
+}
+
+.bg-white {
+	background-color: #ffffff !important;
+}
+
+.text-faded {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+/*--------------- main : end -----------------*/
+
+/*--------------- section : start -----------------*/
+
+section {
+	padding: 4rem 0;
+}
+
+.section-heading {
+	margin-top: 0;
+}
+
+.section-paragraph {
+	margin-bottom: 0;
+	font-size: 1.2em;
+	text-align: justify;
+	-moz-text-align-last: center;
+	text-align-last: center;
+}
+
+#customPizza {
+	background-image: url("../img/customPizza.jpg");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#loginForm {
+	width: 100%;
+	height: 100%;
+}
+
+#loginError {
+	display: none;
+}
+
+/*--------------- section : end -----------------*/
+
+/*--------------- navbar : start -----------------*/
+
+.navbar-light .navbar-toggler {
+	border: 0;
+}
+
+/*nav elemnt hieght*/
+.navbar-nav .nav-link {
+	height: 50px;
+	line-height: 35px;
+}
+
+.navbar {
+	border-bottom: 1px solid rgba(33, 37, 41, 0.1);
+	background-color: #fff;
+	font-family: 'Cairo', sans-serif;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.navbar .navbar-brand {
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #F05F40;
+	font-family: 'Cairo', sans-serif;
+}
+
+.navbar .navbar-brand span {
+	font-style: italic;
+	color: #212529;
+}
+
+.navbar .navbar-brand:focus,
+.navbar .navbar-brand:hover {
+	color: #F05F40;
+}
+
+.navbar .navbar-nav>li.nav-item>a.nav-link,
+.navbar .navbar-nav>li.nav-item>a.nav-link:focus {
+	font-size: .9rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #212529;
+}
+
+.navbar .navbar-nav>li.nav-item>a.nav-link:hover,
+.navbar .navbar-nav>li.nav-item>a.nav-link:focus:hover {
+	color: #F05F40;
+}
+
+.navbar .navbar-nav>li.nav-item>a.nav-link.active,
+.navbar .navbar-nav>li.nav-item>a.nav-link:focus.active {
+	color: #F05F40 !important;
+	background-color: transparent;
+}
+
+.navbar .navbar-nav>li.nav-item>a.nav-link.active:hover,
+.navbar .navbar-nav>li.nav-item>a.nav-link:focus.active:hover {
+	background-color: transparent;
+}
+
+@media (min-width: 992px) {
+	.navbar {
+		border-color: transparent;
+		background-color: transparent;
+	}
+
+	.navbar .navbar-brand {
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.navbar .navbar-brand span {
+		color: #F05F40;
+	}
+
+	.navbar .navbar-brand:focus,
+	.navbar .navbar-brand:hover {
+		color: #fff;
+	}
+
+	.navbar .navbar-nav>li.nav-item>a.nav-link {
+		padding: 0.5rem 1rem;
+	}
+
+	.navbar .navbar-nav>li.nav-item>a.nav-link,
+	.navbar .navbar-nav>li.nav-item>a.nav-link:focus {
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.navbar .navbar-nav>li.nav-item>a.nav-link:hover,
+	.navbar .navbar-nav>li.nav-item>a.nav-link:focus:hover {
+		color: #fff;
+	}
+
+	.navbar.navbar-shrink {
+		border-bottom: 1px solid rgba(33, 37, 41, 0.1);
+		background-color: #fff;
+	}
+
+	.navbar.navbar-shrink .navbar-brand {
+		color: #F05F40;
+	}
+
+	.navbar.navbar-shrink .navbar-brand:focus,
+	.navbar.navbar-shrink .navbar-brand:hover {
+		color: #F05F40;
+	}
+
+	.navbar.navbar-shrink .navbar-nav>li.nav-item>a.nav-link,
+	.navbar.navbar-shrink .navbar-nav>li.nav-item>a.nav-link:focus {
+		color: #212529;
+	}
+
+	.navbar.navbar-shrink .navbar-nav>li.nav-item>a.nav-link:hover,
+	.navbar.navbar-shrink .navbar-nav>li.nav-item>a.nav-link:focus:hover {
+		color: #F05F40;
+	}
+
+	.navbar.navbar-shrink .navbar-brand span {
+		color: #212529;
+	}
+}
+
+/*--------------- navbar : end -----------------*/
+
+/*--------------- headers : start -----------------*/
+
+header.masthead {
+	padding-top: 10rem;
+	padding-bottom: calc(10rem - 56px);
+	background-image: url("../img/01.jpg");
+	background-position: center center;
+	background-size: cover;
+}
+
+header.masthead hr {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+header.masthead h1 {
+	font-size: 2rem;
+}
+
+header.masthead p {
+	font-weight: 300;
+}
+
+@media (min-width: 768px) {
+	header.masthead p {
+		font-size: 1.15rem;
+	}
+}
+
+@media (min-width: 992px) {
+	header.masthead {
+		height: 100vh;
+		min-height: 650px;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	header.masthead h1 {
+		font-size: 3rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	header.masthead h1 {
+		font-size: 4rem;
+	}
+}
+
+.logo-slider {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+/*--------------- headers : end -----------------*/
+
+/*--------------- colors : start -----------------*/
+
+.text-primary {
+	color: #F05F40 !important;
+}
+
+/*--------------- colors : end -----------------*/
+
+/*--------------- buttons : start -----------------*/
+
+.btn {
+	font-weight: 400;
+	/*text-transform: uppercase;*/
+	border: none;
+	border-radius: 300px;
+	font-family: 'Cairo', sans-serif;
+}
+
+.btn-xl {
+	padding: 1rem 2rem;
+}
+
+.btn-primary {
+	background-color: #F05F40;
+	border-color: #F05F40;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+	color: #fff;
+	background-color: #F05F40 !important;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+	box-shadow: 0 0 0 0.2rem rgba(240, 95, 64, 0.5) !important;
+}
+
+/*--------------- buttons : end -----------------*/
+
+/*--------------- footer : start -----------------*/
+
+.social a {
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 1.4em !important;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.social a:hover {
+	color: rgba(255, 255, 255);
+}
+
+.footer {
+	background-image: url("../img/footer.jpg");
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.footNav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+.footNav ul li {
+	display: inline;
+	font-size: 1.1rem;
+	font-weight: 700;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.footNav ul li {
+	display: inline;
+	font-size: 1.1rem;
+	font-weight: 700;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.footNav ul li a {
+	text-decoration: none;
+}
+
+.footNav ul li:hover a {
+	color: #fff;
+}
+
+/*--------------- footer : end -----------------*/
+
+/*--------------- card : start -----------------*/
+
+
+.card-round {
+	border-radius: 1.25rem;
+}
+
+.card-round .card-img-top {
+    width: 100%;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+}
+
+.card-footer {
+	background-color: rgba(255,255,255,.01);
+}
+
+/*--------------- card : end -----------------*/
+
+/*--------------- pizza stack : start -----------------*/
+
+.pizza-stack {
+	position: relative;
+}
+
+.pizza-stack img {
+	position: absolute;
+	top: 0;
+    left: 0;
+}
+
+.pizza-stack img:first-child {
+	position: relative;
+}
+
+.Cheese, .Tomato, .Pepper, 
+.Onion, .Rocca, .BlackOlive, 
+.GreenOlive, .Sausage, .Mushroom, .Shrimp {
+	opacity: 0;
+}
+
+/*--------------- pizza stack : end -----------------*/
+
+/*--------------- cart and dropdown : start -----------------*/
+
+#cartMenu {
+	padding-right: 0;
+}
+
+/*hide arrow of dropdown*/
+.dropdown-toggle::after {
+	display: none;
+}
+
+.dropdown-item:active.text-primary:hover {
+    color: #fff !important;
+}
+
+.dropdown-item .badge {
+	line-height: normal;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #F05F40;
+}
+
+.text-primary.dropdown-item:focus,
+.text-primary.dropdown-item:hover {
+    color: #F05F40 !important;
+}
+
+.dropdown-menu {
+	width: 100%;
+}
+
+@media (min-width: 992px) {
+
+}
+
+/*--------------- cart and dropdown : end -----------------*/
+
+/*--------------- selection : start -----------------*/
+
+::-moz-selection {
+	color: #fff;
+	background: #212529;
+	text-shadow: none;
+}
+
+::selection {
+	color: #fff;
+	background: #212529;
+	text-shadow: none;
+}
+
+img::-moz-selection {
+	color: #fff;
+	background: transparent;
+}
+
+img::selection {
+	color: #fff;
+	background: transparent;
+}
+
+img::-moz-selection {
+	color: #fff;
+	background: transparent;
+}
+
+/*--------------- selection : end -----------------*/
+
+/*--------------- other : start -----------------*/
+
+
+
+.devider {
+	width: 100%;
+	border-width: 1px;
+	border-color: #212529;
+	max-width: 100%;
+	opacity: 0.1;
+}
+
+.form-control.round {
+	border-radius: 1.25rem;
+} 
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #F05F40;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    background-color: #F05F40;
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::before {
+    background-color: #F05F40;
+}
+
+.beginOfContent {
+	margin-top: 100px;
+}
+
+/*--------------- other : end -----------------*/
+
+
+.card-title > a {
+	text-decoration: none;
+}
+
+
+select.form-control {
+    padding: 0.1rem .75rem;
+}
