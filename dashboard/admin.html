@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Admins | Dominant Pizza</title>
+	<!-- Bootstrap core CSS -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts for this template -->
+	<link href="../css/fontawesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Plugin CSS -->
+	<link href="../css/magnific-popup.css" rel="stylesheet">
+	<!-- Flags CSS -->
+	<link href="../css/flag-icon.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="../css/style.css" rel="stylesheet">
+
+	<script src="../js/angular.min.js"></script>
+</head>
+
+<body id="page-top" ng-app="myApp" ng-controller="myCtrl">
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink shadow-sm">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="../index.html">Dominant<span>Pizza</span></a>
+
+			<!-- navbar toggoler -->
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+			 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- end of navbar toggoler -->
+
+			<!-- navbar links -->
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="dashboard.html">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="order.html">Orders</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="admin.html">Admins</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="customer.html">Customers</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="ingredient.html">Ingredients</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="nonPizza.html">Products</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="" onclick="logout()">Logout</a>
+					</li>
+				</ul>
+			</div>
+			<!-- end of navbar links -->
+		</div>
+	</nav>
+	<!-- end of navbar -->
+
+	<div class="container beginOfContent">
+		<div class="row justify-content-center">
+			<div class="col">
+				<div class="card mt-4 mb-4">
+					<div class="card-header text-center">Admins</div>
+					<div class="card-body" id="cardBody">
+						<table class="table table-hover text-center mb-0">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Admin Name</th>
+									<th scope="col">Admin User</th>
+									<th scope="col">Admin Pass</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody class="mb-0">
+								<tr ng-repeat="x in admins track by x.AdminID">
+									<td>{{$index + 1}}</td>
+									<td>{{x.AdminName}}</td>
+									<td>{{x.AdminUser}}</td>
+									<td>*****</td>
+									<td scope="row">
+										<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-primary" ng-click="editAdmin($index)" data-toggle="modal" data-target="#Modal"><i
+												 class="fas fa-pen fa-xs"></i></button>
+											<button type="button" class="btn btn-dark" ng-click="deleteAdmin($index)"><i class="fas fa-backspace fa-xs"></i></button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer text-center">
+						<button type="button" class="btn btn-primary btn-sm" ng-click="editAdmin(-1)" data-toggle="modal" data-target="#Modal">Add New</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal -->
+	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content" id="modalContent">
+				<div class="modal-header" id="modalHeader">
+					<h5 class="modal-title" id="modalTitle" ng-model="modalTitle">{{modalTitle}}</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="modalBody" class="modal-body" ng-model="modalBody">
+					<form>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="AdminID">ID</label>
+								<input type="text" class="form-control" id="AdminID" placeholder="ID" disabled>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="AdminName">Name</label>
+								<input type="text" class="form-control" id="AdminName" placeholder="Name">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="AdminUser">Username</label>
+								<input type="text" class="form-control" id="AdminUser" placeholder="Username">
+							</div>
+							<div class="form-group col-md-6">
+								<label for="AdminPass">Password</label>
+								<input type="password" class="form-control" id="AdminPass" placeholder="Password">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" ng-click="" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="sendAdminData()" data-dismiss="modal">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of modal -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="../js/jquery.easing.min.js"></script>
+	<!-- Custom scripts for this template -->
+	<script src="js/adminScript.js"></script>
+</body>
+
+</html>

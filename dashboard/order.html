@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Orders | Dominant Pizza</title>
+	<!-- Bootstrap core CSS -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts for this template -->
+	<link href="../css/fontawesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Plugin CSS -->
+	<link href="../css/magnific-popup.css" rel="stylesheet">
+	<!-- Flags CSS -->
+	<link href="../css/flag-icon.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="../css/style.css" rel="stylesheet">
+
+	<script src="../js/angular.min.js"></script>
+</head>
+
+<body id="page-top" ng-app="myApp" ng-controller="myCtrl">
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink shadow-sm">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="../index.html">Dominant<span>Pizza</span></a>
+
+			<!-- navbar toggoler -->
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+			 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- end of navbar toggoler -->
+
+			<!-- navbar links -->
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="dashboard.html">Dashboard</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="order.html">Orders</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="admin.html">Admins</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="customer.html">Customers</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="ingredient.html">Ingredients</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="nonPizza.html">Products</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="" onclick="logout()">Logout</a>
+					</li>
+				</ul>
+			</div>
+			<!-- end of navbar links -->
+		</div>
+	</nav>
+	<!-- end of navbar -->
+
+	<div class="container beginOfContent">
+		<div class="row justify-content-center">
+			<div class="col">
+				<div class="card mt-4 mb-4">
+					<div class="card-header text-center">Orders</div>
+					<div class="card-body" id="cardBody">
+						<table class="table table-hover text-center mb-0">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Customer</th>
+									<th scope="col">Price</th>
+									<th scope="col">Status</th>
+									<th scope="col">Address</th>
+									<th scope="col">Order Time</th>
+									<th scope="col">Deliver Time</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</thead>
+							<tbody class="mb-0">
+								<tr ng-repeat="x in Orders track by x.OrderID">
+									<td>{{x.OrderID}}</td>
+									<td scope="row">
+										<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-primary" ng-click="showCustomer(x.CustomerID)" data-toggle="modal"
+											 data-target="#customerModal"><i class="far fa-eye fa-xs"></i></button>
+										</div>
+									</td>
+									<td>{{x.TotalPrice}}</td>
+									<td>{{x.Status}}</td>
+									<td>{{x.OrderAddress}}</td>
+									<td>{{x.OrderTime}}</td>
+									<td>{{x.OrderDeliverTime}}</td>
+									<td scope="row">
+										<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+											<button type="button" class="btn btn-secondary" ng-click="getOrderDetails(x.OrderID)" data-toggle="modal" data-target="#detailModal">Details</button>
+											<button type="button" class="btn btn-primary" ng-click="editStatus(x.OrderID, x.Status)" data-toggle="modal" data-target="#Modal"><i
+												 class="fas fa-pen fa-xs"></i></button>
+											<button type="button" class="btn btn-dark" ng-click="deleteOrder($index)"><i class="fas fa-backspace fa-xs"></i></button>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer text-center">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- modal -->
+	<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content" id="modalContent">
+				<div class="modal-header" id="modalHeader">
+					<h5 class="modal-title" id="modalTitle">Status</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="modalBody" class="modal-body text-center" ng-model="modalBody">
+						<div class="btn-group btn-group-lg" id="statusBtns" role="group" aria-label="Basic example">
+							<button type="button" class="btn btn-secondary" id="statusReceived" ng-disabled="Received">Received</button>
+							<button type="button" class="btn btn-secondary" id="statusApproved" ng-disabled="Approved">Approved</button>
+							<button type="button" class="btn btn-secondary" id="statusPrepared" ng-disabled="Prepared">Prepared</button>
+							<button type="button" class="btn btn-primary" id="statusDelivered" ng-disabled="Delivered">Delivered</button>
+							<button type="button" class="btn btn-secondary" id="statusApproved" ng-disabled="Rejected">Rejected</button>
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" ng-click="" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" onclick="sendStatusData()" data-dismiss="modal">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of modal -->
+
+	<!-- detailModal -->
+	<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content" id="detailModalContent">
+				<div class="modal-header" id="detailModalHeader">
+					<h5 class="modal-title">Order Details</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="detailModalBody" class="modal-body">
+					<h5 class="text-center">Pizza List</h5>
+					<table class="table text-center" style="border: 1px solid #cdd0d4">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Size</th>
+								<th scope="col">Dough</th>
+								<th scope="col">Amount</th>
+								<th scope="col">Total Price</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="x in pizzaOrder track by x.PizzaID">
+							<tr>
+								<td>{{$index + 1}}</td>
+								<td style="border-left: 1px solid #cdd0d4;">{{x.PizzaSize}}</td>
+								<td>{{x.PizzaDough}}</td>
+								<td>{{x.Amount}}</td>
+								<td>{{x.Price}}</td>
+							</tr>
+							<tr>
+								<td scope="row">
+									<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+										<button type="button" class="btn btn-dark" ng-click="deletePizza($index, x.PizzaID)"><i class="fas fa-backspace fa-xs"></i></button>
+									</div>
+								</td>
+								<td colspan="4" style="border-left: 1px solid #cdd0d4;"  >{{x.PizzaIngList}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h5 class="text-center">Extra List</h5>
+
+					<table class="table text-center" style="border: 1px solid #cdd0d4">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Name</th>
+								<th scope="col">Amount</th>
+								<th scope="col">Actions</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="x in nonPizzaOrder track by x.OrderNonID">
+							<tr>
+								<td>{{$index + 1}}</td>
+								<td>{{x.nonName}}</td>
+								<td>{{x.amount}}</td>
+								<td scope="row">
+									<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+										<button type="button" class="btn btn-dark" ng-click="deleteNonPizza($index, x.OrderNonID)"><i class="fas fa-backspace fa-xs"></i></button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" ng-click="" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of detailModal -->
+
+
+
+	<!-- customerModal -->
+	<div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="customerModalTitle"
+	 aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content" id="customerModalContent">
+				<div class="modal-header" id="customerModalHeader">
+					<h5 class="modal-title">Customer Details</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="customerModalBody" class="modal-body">
+					<form>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="CustomerID">ID</label>
+								<input type="text" class="form-control" id="CustomerID" placeholder="ID" disabled>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="CustomerEmail">Email</label>
+								<input type="email" class="form-control" id="CustomerEmail" placeholder="Email" disabled>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="CustomerFname">First Name</label>
+								<input type="text" class="form-control" id="CustomerFname" placeholder="First Name" disabled>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="CustomerLname">Last Name</label>
+								<input type="text" class="form-control" id="CustomerLname" placeholder="Last Name" disabled>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
+								<label for="CustomerPhone">Phone</label>
+								<input type="Number" class="form-control" id="CustomerPhone" placeholder="Phone" disabled>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" ng-click="" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of customerModal -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="../js/jquery.easing.min.js"></script>
+	<!-- Custom scripts for this template -->
+	<script src="js/orderScript.js"></script>
+</body>
+
+</html>
