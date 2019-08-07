@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Dominant Pizza</title>
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts for this template -->
+	<link href="css/fontawesome.min.css" rel="stylesheet" type="text/css">
+	<!-- Plugin CSS -->
+	<link href="css/magnific-popup.css" rel="stylesheet">
+	<!-- Flags CSS -->
+	<link href="css/flag-icon.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/style.css" rel="stylesheet">
+
+	<script src="js/angular.min.js"></script>
+</head>
+
+<body id="page-top" ng-app="myApp" ng-controller="myCtrl">
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">Dominant<span>Pizza</span></a>
+
+			<!-- cart button -->
+			<div class="d-flex order-lg-1 ml-auto">
+				<div class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="cart.html" id="cartMenu" aria-haspopup="true" aria-expanded="true">
+						<button type="button" class="btn btn-primary">
+							<i class="fas fa-shopping-cart"></i> <span class="badge badge-light" id="cartItemNumber"></span>
+						</button>
+					</a>
+				</div>
+			</div>
+			<!-- end of cart button -->
+
+			<!-- navbar toggoler -->
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+			 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- end of navbar toggoler -->
+
+			<!-- navbar links -->
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#pizza">Pizza</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#extras">Extra</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#track">Track Order</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="login.php">Login</a>
+					</li>
+				</ul>
+			</div>
+			<!-- end of navbar links -->
+		</div>
+	</nav>
+	<!-- end of navbar -->
+
+	<!-- header -->
+	<header class="masthead master text-center text-white d-flex" id="header">
+		<div class="container my-auto">
+			<div class="row">
+				<div class="col-lg-10 mx-auto">
+					<img src="img/slider-logo.png" alt="" class="img-fluid logo-slider">
+					<hr>
+				</div>
+				<div class="col-lg-8 mx-auto">
+					<p class="text-faded mb-5">Dominant Pizza .. pizza like nowhere!</p>
+					<a class="btn btn-primary js-scroll-trigger" href="#customPizza">ORDER NOW</a>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- end of header -->
+
+	<!-- pizzas section -->
+	<section class="bg-light" id="pizza">
+		<div class="container">
+			<h2 class="section-heading text-primary text-center">Our Pizzas</h2>
+			<hr class="my-4 mb-4">
+			<br>
+			<div class="row">
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/pizza/01.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Broccoli Pizza</h4>
+							<p class="card-text">Broccoli Pizza is one of the most Tasty Pizzas! You Cant miss it ..</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="#" ng-click="customizePizza('Broccoli Pizza', 'pizza')"
+									 data-toggle="modal" data-target="#pizzaModal">ADD ORDER</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/pizza/02.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Sausage Pizza</h4>
+							<p class="card-text">Sausage Pizza is one of the most Tasty Pizzas! You Cant miss it ..</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="#" ng-click="customizePizza('Sausage Pizza', 'pizza')"
+									data-toggle="modal" data-target="#pizzaModal">ADD ORDER</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/pizza/03.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Mushroom Pizza</h4>
+							<p class="card-text">Mushroom Pizza is one of the most Tasty Pizzas! You Cant miss it ..</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="#" ng-click="customizePizza('Mushroom Pizza', 'pizza')"
+									data-toggle="modal" data-target="#pizzaModal">ADD ORDER</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/pizza/04.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Vegi Pizza</h4>
+							<p class="card-text">Vegi Pizza is one of the most Tasty Pizzas! You Cant miss it ..</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="#" ng-click="customizePizza('Vegi Pizza', 'pizza')"
+									data-toggle="modal" data-target="#pizzaModal">ADD ORDER</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/pizza/05.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">BBQ Pizza</h4>
+							<p class="card-text">BBQ Pizza is one of the most Tasty Pizzas! You Cant miss it ..</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="#" ng-click="customizePizza('BBQ Pizza', 'pizza')"
+									data-toggle="modal" data-target="#pizzaModal">ADD ORDER</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/pizza/06.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Cheese Pizza</h4>
+							<p class="card-text">Broccoli Pizza is one of the most Tasty Pizzas! You Cant miss it ..</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="#" ng-click="customizePizza('Cheese Pizza', 'pizza')"
+									data-toggle="modal" data-target="#pizzaModal">ADD ORDER</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end of pizzas section -->
+
+	<!-- custom pizza -->
+	<section class="bg-primary" id="customPizza">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 mx-auto text-center">
+					<h2 class="section-heading text-white">Customize Your Pizza</h2>
+					<hr class="light my-4">
+					<p class="text-white mb-4 section-paragraph">Dominant Pizza, Inc., branded as DoPizza's, is a new pizza restaurant chain founded in 2018. The corporation is headquartered at the OMU</p>
+					<a class="btn btn-light btn-xl" href="" ng-click="customizePizza('Custom Pizza', 'pizza')" data-toggle="modal"
+					 data-target="#pizzaModal">Customize</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end of custom pizza -->
+
+	<!-- extras section -->
+	<section class="bg-light" id="extras">
+		<div class="container">
+			<h2 class="section-heading text-primary text-center">Extra Stuff</h2>
+			<hr class="my-4 mb-4">
+			<br>
+			<div class="row">
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/extra/01.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Drinks</h4>
+							<p class="card-text">Cola, Juice, Water and other ..</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="" ng-click="extras('Drinks')" data-toggle="modal"
+									 data-target="#pizzaModal">
+									 ADD
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/extra/02.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Salads</h4>
+							<p class="card-text">Automn, Cheese, Classic and much more!</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="" ng-click="extras('Salad')" data-toggle="modal"
+									 data-target="#pizzaModal">
+									 ADD
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 d-flex align-items-stretch">
+					<div class="card card-round shadow-sm mb-4">
+						<img class="card-img-top" src="img/extra/03.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h4 class="card-title">Fries & Sos</h4>
+							<p class="card-text">Fries, Sos, and other stuff.</p>
+							<div class="row">
+								<div class="col">
+									<a class="btn btn-primary btn-sm ml-auto float-right" href="" ng-click="extras('Other')" data-toggle="modal"
+									 data-target="#pizzaModal">
+									 	ADD
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end of pizzas section -->
+
+	<!-- order track -->
+	<section class="bg-white" id="track">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 mx-auto text-center">
+					<h2 class="section-heading">Track Order</h2>
+					<hr class="my-4">
+					<p class="mb-3">Enter Your Tracking Order Number</p>
+					<div class="row justify-content-center">
+						<div class="col-md-6">
+							<div class="form-group">
+								<input type="text" class="form-control round" id="trackNumber" placeholder="Track Number">
+							</div>
+							<a class="btn btn-primary" href="" ng-click="track()" data-toggle="modal" data-target="#pizzaModal">Track</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end of order track -->
+
+	<!-- order track -->
+	<section class="bg-light" id="previous">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 mx-auto text-center">
+					<h2 class="section-heading">Previous Order</h2>
+					<hr class="my-4">
+					<div class="row justify-content-center">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="oldEmail">Email</label>
+								<input type="text" class="form-control round" id="oldEmail" placeholder="Email .. ">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="oldPhone">Telefon Number</label>
+								<input type="text" class="form-control round" id="oldPhone" placeholder="Phone ..">
+							</div>
+						</div>
+
+					</div>
+					<a class="btn btn-primary" href="" ng-click="preOrders()" data-toggle="modal" data-target="#preModal">Check</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end of order track -->
+
+	<!-- footer -->
+	<section class="bg-dark text-white footer" id="footer">
+		<div class="container text-center">
+			<div class="footNav">
+				<ul>
+					<li><a href="#pizza" class="js-scroll-trigger">Pizza</a></li>
+					<li><a href="#extras" class="js-scroll-trigger">Extra</a></li>
+					<li><a href="#track" class="js-scroll-trigger">Track</a></li>
+				</ul>
+			</div>
+			<div class="social">
+				<a href="#"><i class="fab fa-facebook-f"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a>
+				<a href="#"><i class="fas fa-at"></i></a>
+			</div>
+			<p class="mt-4 text-faded">© Copyright 2019 - All Rights Reserved</p>
+		</div>
+	</section>
+	<!-- end of footer -->
+
+	<!-- pizza modal -->
+	<div class="modal fade" id="pizzaModal" tabindex="-1" role="dialog" aria-labelledby="pizzaModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content" id="modalContent">
+				<div class="modal-header" id="modalHeader">
+					<h5 class="modal-title" id="modalTitle" ng-model="modalTitle">{{modalTitle}}</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="modalPizza"></div>
+				<div id="modalBody" class="modal-body" ng-model="modalBody">
+
+				</div>
+				<div class="modal-footer">
+					<h5 class="flex-grow-1" ng-hide="tracking">Total Price: <span id="totalPrice" class="text-primary"></span></h5>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" ng-hide="tracking" ng-click="addOrder()" data-dismiss="modal">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of pizza modal -->
+
+	<!-- detailModal -->
+	<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content" id="detailModalContent">
+				<div class="modal-header" id="detailModalHeader">
+					<h5 class="modal-title">Order Details</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="detailModalBody" class="modal-body">
+					<h5 class="text-center">Pizza List</h5>
+					<table class="table text-center" style="border: 1px solid #cdd0d4">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Size</th>
+								<th scope="col">Dough</th>
+								<th scope="col">Amount</th>
+								<th scope="col">Total Price</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="x in oldPizzaOrder track by x.PizzaID">
+							<tr>
+								<td>{{$index + 1}}</td>
+								<td style="border-left: 1px solid #cdd0d4;">{{x.PizzaSize}}</td>
+								<td>{{x.PizzaDough}}</td>
+								<td>{{x.Amount}}</td>
+								<td>{{x.Price}}</td>
+							</tr>
+							<tr>
+								<td>{{$index + 1}}</td>
+								<td colspan="4" style="border-left: 1px solid #cdd0d4;"  >{{x.PizzaIngList}}</td>
+							</tr>
+						</tbody>
+					</table>					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" ng-click="" data-dismiss="modal" data-toggle="modal" data-target="#preModal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of detailModal -->
+
+	<!-- pizza modal -->
+	<div class="modal fade" id="preModal" tabindex="-1" role="dialog" aria-labelledby="preModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content" id="preModalContent">
+				<div class="modal-header" id="preModalHeader">
+					<h5 class="modal-title" id="preModalTitle">Previous Orders</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<table class="table table-hover text-center mb-0">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Order Date</th>
+								<th scope="col">Order Details</th>
+								<th scope="col">Actions</th>
+							</tr>
+						</thead>
+						<tbody class="mb-0">
+							<tr ng-repeat="x in oldOrders">
+								<td>{{$index + 1}}</td>
+								<td>{{x.OrderTime}}</td>
+								<td scope="row">
+									<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+										<button type="button" class="btn btn-primary" ng-click="oldOrderDetails($index)" data-dismiss="modal" data-toggle="modal" data-target="#detailModal"><i
+											 class="far fa-eye fa-xs"></i></button>
+									</div>
+								</td>
+								<td scope="row">
+									<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+										<button type="button" class="btn btn-dark" ng-click="reOrder($index)" data-toggle="modal" data-target="#Modal">
+											Add to Cart
+										</button>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end of pizza modal -->
+
+	<div id="hiddenItems" hidden>
+		<div id="pizzaStack">
+			<div class="pizza-stack">
+				<img src="img/vector/main.png" class="img-fluid" alt="Responsive image">
+				<img src="img/vector/Cheese.png" class="img-fluid Cheese" alt="Responsive image">
+				<img src="img/vector/Tomato.png" class="img-fluid Tomato" alt="Responsive image">
+				<img src="img/vector/Pepper.png" class="img-fluid Pepper" alt="Responsive image">
+				<img src="img/vector/Onion.png" class="img-fluid Onion" alt="Responsive image">
+				<img src="img/vector/Rocca.png" class="img-fluid Rocca" alt="Responsive image">
+				<img src="img/vector/BlackOlive.png" class="img-fluid BlackOlive" alt="Responsive image">
+				<img src="img/vector/GreenOlive.png" class="img-fluid GreenOlive" alt="Responsive image">
+				<img src="img/vector/Sausage.png" class="img-fluid Sausage" alt="Responsive image">
+				<img src="img/vector/Mushroom.png" class="img-fluid Mushroom" alt="Responsive image">
+				<img src="img/vector/Shrimp.png" class="img-fluid Shrimp" alt="Responsive image">
+			</div>
+		</div>
+		<div id="pizzaBasics">
+			<h5>Dough</h5>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="pizzaDough-normal" name="pizzaDough" class="custom-control-input" value="normal" checked>
+				<label class="custom-control-label" for="pizzaDough-normal">Normal</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="pizzaDough-thin" name="pizzaDough" class="custom-control-input" value="thin">
+				<label class="custom-control-label" for="pizzaDough-thin">Thin</label>
+			</div>
+			<hr class="devider">
+			<h5>Pizza Size</h5>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="pizzaSize-small" name="pizzaSize" class="custom-control-input" value="small" checked>
+				<label class="custom-control-label" for="pizzaSize-small">Small</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="pizzaSize-medium" name="pizzaSize" class="custom-control-input" value="medium">
+				<label class="custom-control-label" for="pizzaSize-medium">Medium</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+				<input type="radio" id="pizzaSize-large" name="pizzaSize" class="custom-control-input" value="large">
+				<label class="custom-control-label" for="pizzaSize-large">Large</label>
+			</div>
+			<hr class="devider">
+			<h5>Options</h5>
+		</div>
+		<div class="custom-control custom-checkbox custom-control-inline" id="rootCheckBox">
+			<input type="checkbox" class="custom-control-input" id="customCheck-">
+			<label class="custom-control-label" for="customCheck-"></label>
+		</div>
+		<div id="amountSection">
+			<hr class="devider">
+			<h5>Amount</h5>
+			<div class="form-group mb-0">
+				<input type="number" min="1" max="10" class="form-control round" id="amountNumber" placeholder="" value="1">
+			</div>
+		</div>
+		<div id="NonPizzaStart">
+			<table class="table table-borderless text-left">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Product</th>
+						<th scope="col">Price</th>
+						<th scope="col">Amount</th>
+					</tr>
+				</thead>
+				<tbody id="nonPizzaTableBody">
+				</tbody>
+			</table>
+		</div>
+		<table>
+			<tr id="rootTableRow">
+				<th scope="row">
+					<div class="custom-control custom-checkbox custom-control-inline">
+						<input type="checkbox" class="custom-control-input" id="nonPizzaCheck-">
+						<label class="custom-control-label" for="nonPizzaCheck-"></label>
+					</div>
+				</th>
+				<td id="nonPizzaName-">CocaCola</td>
+				<td id="nonPizzaPrice-">20</td>
+				<td><input type="number" min="1" max="10" class="form-control round form-control-sm" id="nonPizzaAmount-"
+					 placeholder="" value="1"></td>
+			</tr>
+		</table>
+		<div id="trackMessage">
+			<p class="text-center mb-0">Enter Referance Number</p>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Plugin JavaScript -->
+	<script src="js/jquery.easing.min.js"></script>
+	<!-- Custom scripts for this template -->
+	<script src="js/script.js"></script>
+	<script src="js/uiScript.js"></script>
+</body>
+
+</html>
